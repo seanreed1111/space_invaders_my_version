@@ -3,7 +3,6 @@
 <head>
 	<title>Space Invaders!</title>
 	<script src="helpers.js"></script>
-	<script src="spaceinvaders.js"></script>
 	<style type="text/css">
 		canvas {
 			background-color: #000;
@@ -19,6 +18,42 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript">
+	var screen, input, frames;
+	var alSprite, taSprite, ciSprite;
+	var aliens, dir, tank, bullets, cities;
+	
+	function main(){
+		screen = new Screen(510,600);
+		input = new InputHandler();
+
+		var img = new Image();
+		img.addEventListener("load", function(){
+			alSprite = new Sprite(this,0,0,22,16);
+			init();
+			run();
+		});
+		img.src = "assets/enemy.png";
+	};
+	function init(){};
+
+	function run(){
+		var loop = function(){
+			update();
+			render();
+
+			window.requestAnimationFrame(loop, screen.canvas);
+		}
+		window.requestAnimationFrame(loop, screen.canvas);
+	};
+
+	function update(){};
+
+	function render(){
+		screen.drawSprite(alSprite, 10,10);
+	};
+	main();
+</script>
 
 </body>
 </html>
